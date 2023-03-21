@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Fragment, useState } from "react";
+import InfoBase from "./components/InfoBase";
+import WeatherCard from "./components/WeatherCard";
+import LocationSearch from "./components/LocationSearch";
 
 function App() {
+  const [location, setLocation] = useState("");
+  const [data, setData] = useState();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <InfoBase>
+        <LocationSearch setLocation={setLocation} location={location} />
+        <WeatherCard data={data} setData={setData} location={location} />
+      </InfoBase>
+    </Fragment>
   );
 }
 
